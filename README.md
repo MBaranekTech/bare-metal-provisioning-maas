@@ -68,3 +68,29 @@ ssh -L 5240:127.0.0.1:5240 user@192.168.X.X
 ```
 Then open in your local browser and access MAAS GUI: <br>
 http://127.0.0.1:5240/MAAS
+
+```bash
+Check if is binded to 0.0.0.0:5240  0.0.0.0:* 
+
+sudo maas config 
+Mode: region+rack
+Settings:
+maas_url=http://192.168.88.208:5240/MAAS
+database_host=localhost
+database_port=None
+database_name=maasdb
+database_user=maas
+database_pass=(hidden)
+```
+7. **Install libvirt, qemu, virt-manager, and some supporting packages on Linux Client side:**:  
+```bash
+sudo apt install -y libvirt-daemon-system libvirt-clients qemu-kvm virt-manager bridge-utils
+ 
+Explanation:
+libvirt-daemon-system: System-wide libvirt service.
+libvirt-clients: Command-line tools (virsh, etc.).
+qemu-kvm: Hypervisor for virtualization.
+virt-manager: GUI for managing VMs.
+bridge-utils: For network bridging if needed.
+```
+
