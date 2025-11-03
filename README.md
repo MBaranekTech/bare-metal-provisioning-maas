@@ -82,7 +82,7 @@ database_name=maasdb
 database_user=maas
 database_pass=(hidden)
 ```
-7. **Install libvirt, qemu, virt-manager, and some supporting packages on Linux Client side:**:  
+7. **Install libvirt, qemu, virt-manager, and some supporting packages on Linux Client side**:  
 ```bash
 sudo apt install -y libvirt-daemon-system libvirt-clients qemu-kvm virt-manager bridge-utils
  
@@ -93,4 +93,36 @@ qemu-kvm: Hypervisor for virtualization.
 virt-manager: GUI for managing VMs.
 bridge-utils: For network bridging if needed.
 ```
+8.**Start and enable libvirt**:
+```bash
+Enable the libvirt daemon to start at boot:
+sudo systemctl enable --now libvirtd
 
+Check status:
+sudo systemctl status libvirtd
+```
+9.**Add your user to the libvirt group**:
+```bash
+This allows you to manage VMs without sudo:
+
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+```
+Check if KVM is available:
+```
+virsh list --all
+```
+10.**Create VM**:
+```bash
+virt-install \
+  --name maas-test1 \
+  --ram 4096 --vcpus 2 \
+  --disk size=10,bus=virtio \
+  --os-variant ubuntu24.04 \
+  --network bridge=br0,model=virtio \
+  --boot hd,menu=on \
+  --pxe \
+  --graphics vnc,listen=0.0.0.0
+  
+This allows PXE for commissioning/deployment, but after OS installation, it will boot from disk first. 
+```
