@@ -126,3 +126,50 @@ virt-install \
   
 This allows PXE for commissioning/deployment, but after OS installation, it will boot from disk first. 
 ```
+11.**Create DHCP reservations and check DHCP service in controllers**:
+<img width="2503" height="1124" alt="Screenshot from 2025-11-04 03-10-12" src="https://github.com/user-attachments/assets/ca5fb19c-6a3c-430e-910f-7ebb3b998945" />
+
+<img width="638" height="1018" alt="Screenshot from 2025-11-04 03-11-16" src="https://github.com/user-attachments/assets/e4cc7dc6-5aa3-4968-9ebd-11f3853480ac" /> <br>
+
+Now we are prepared for "node lifecycle"
+
+
+🧩 Node Lifecycle in MAAS <br>
+Each machine (called a node) managed by MAAS follows a defined lifecycle — from initial discovery to decommissioning. <br>
+This process ensures every node can be automatically detected, configured, deployed, and eventually released or retired.
+
+
+🧭 Lifecycle Overview <br>
+Stage	Description <br>
+New	Node discovered via PXE boot <br>
+Commissioning	Hardware inventory and custom scripts <br>
+Ready	BMC configured and available for deployment <br>
+Allocated	Reserved to a specific user <br>
+Deploying	OS installation and full configuration <br>
+Releasing	Node wiped and returned to pool <br>
+
+After we run our WM on client side PXE boot is activated - MAAS server node discover and VM automatically boot from PXE. <br> 
+
+<img width="2315" height="1039" alt="Screenshot from 2025-11-03 21-03-30" src="https://github.com/user-attachments/assets/293aa096-3ef3-4840-ba71-306173302e55" /> <br>
+
+Our VM will discover in Machines section on MAAS server and we can start Commisssioning process - I set Manual. - I will reset VM and machine will automatically start commissioning process. <br>
+
+<img width="2479" height="990" alt="Screenshot from 2025-11-03 22-38-10" src="https://github.com/user-attachments/assets/27950cf0-39f8-499e-af6b-4533783c5be0" /> <br>
+
+<img width="2479" height="990" alt="Screenshot from 2025-11-03 22-37-37" src="https://github.com/user-attachments/assets/d25dac62-1ffb-489b-af26-61e81d4dedaa" /> <br>
+
+<img width="2479" height="990" alt="Screenshot from 2025-11-03 22-38-29" src="https://github.com/user-attachments/assets/6e3aac71-e231-44cf-8b6c-87a3cfe6b3ce" /> <br>
+
+After commissioning process VM is ready for deploy. <br> 
+
+<img width="2479" height="303" alt="Screenshot from 2025-11-03 22-47-46" src="https://github.com/user-attachments/assets/4b5d879d-d6d7-4c0d-8194-37ea6e81d2d3" /> <br>
+
+Click on Actions in Machines section - Deploy and start deploying OS. <br>
+
+<img width="2503" height="1124" alt="Screenshot from 2025-11-04 03-10-12" src="https://github.com/user-attachments/assets/c4ec70cf-ac35-4511-98e1-f6534deff6e1" />
+
+
+
+
+
+
