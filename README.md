@@ -172,5 +172,35 @@ You should see this and your VM should successfully boot. <br>
 
 <img width="2375" height="1090" alt="Screenshot from 2025-11-04 03-31-53" src="https://github.com/user-attachments/assets/df2d9dfd-71f6-4ab7-af08-964388ef42c0" /> <br>
 
+🔐 Accessing Deployed Nodes via SSH <br>
 
+Once a machine is successfully deployed in MAAS, you can connect to it securely using SSH. <br>
+MAAS automatically injects your SSH public key into the deployed operating system so that you can log in as the default user (ubuntu) without needing a password. <br>
 
+🧩 1. Ensure Your SSH Key Is Added to MAAS 
+
+MAAS uses the SSH keys associated with your user account. <br>
+If no key is present, you won’t be able to SSH into deployed machines. <br>
+
+Option — Using the Web UI <br>
+Open the MAAS dashboard. <br>
+Click your username → Preferences. <br>
+Scroll to the SSH Keys section. <br>
+Click Add SSH Key, then paste the contents of your public key (for example from ~/.ssh/id_ed25519.pub). <br>
+
+🧩 2. Redeploy the Node <br>
+
+MAAS only injects SSH keys during deployment. <br>
+If you added a key after a node was already deployed: <br>
+In the MAAS UI, select the node. <br>
+Click Release. <br>
+Then click Deploy again. <br>
+When the deployment completes, the node will contain your SSH key in /home/ubuntu/.ssh/authorized_keys. <br>
+
+🧩 3. Connect via SSH <br>
+Once deployment is complete, note the node’s assigned IP address (shown in the MAAS UI or with maas $PROFILE machines read). <br>
+Connect using: <br>
+ssh ubuntu@<node_ip> <br>
+Example: <br>
+ssh ubuntu@192.168.88.209 <br>
+You should connect immediately without being prompted for a password. <br>
