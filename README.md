@@ -166,10 +166,11 @@ After commissioning process VM is ready for deploy. <br>
 
 Click on Actions in Machines section - Deploy and start deploying OS. <br>
 
-<img width="2503" height="1124" alt="Screenshot from 2025-11-04 03-10-12" src="https://github.com/user-attachments/assets/c4ec70cf-ac35-4511-98e1-f6534deff6e1" />
+<img width="2503" height="1124" alt="Screenshot from 2025-11-04 03-10-12" src="https://github.com/user-attachments/assets/c4ec70cf-ac35-4511-98e1-f6534deff6e1" /> <br>
 
+You should see this and your VM should successfully boot. <br>
 
-
+<img width="2375" height="1090" alt="Screenshot from 2025-11-04 03-31-53" src="https://github.com/user-attachments/assets/df2d9dfd-71f6-4ab7-af08-964388ef42c0" /> <br>
 
 
 
